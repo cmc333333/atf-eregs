@@ -21,4 +21,6 @@ else
 fi
 
 cf login --a $API --u $CF_USERNAME --p $CF_PASSWORD --o $ORG -s $SPACE
+# Spin down so we don't hit our memory cap
+cf scale $NAME -i 1
 cf zero-downtime-push $NAME -f $MANIFEST
